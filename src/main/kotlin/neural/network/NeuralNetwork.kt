@@ -1,6 +1,7 @@
+package neural.network
 
 /*fun main(){
-    val nn = NeuralNetwork(2,arrayOf(3,2),4)
+    val nn = neural.network.NeuralNetwork(2,arrayOf(3,2),4)
     nn.print()
     print(nn.calc(arrayOf(1.0,-1.0)).joinToString(prefix = "  ",separator = " ") { it.toString() })
 }*/
@@ -13,11 +14,11 @@ class NeuralNetwork(
     var network = ArrayList<Matrix>()
 
     init{
-        network.add(Matrix(input,hidden[0]))
+        network.add(Matrix(input, hidden[0]))
         for(i in 1 until hidden.size){
-            network.add(Matrix(hidden[i-1],hidden[i]))
+            network.add(Matrix(hidden[i - 1], hidden[i]))
         }
-        network.add(Matrix(hidden.last(),output))
+        network.add(Matrix(hidden.last(), output))
     }
 
     fun calc(input:Array<Double>): Array<Double> {

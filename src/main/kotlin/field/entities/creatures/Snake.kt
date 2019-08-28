@@ -1,6 +1,6 @@
 package field.entities.creatures
 
-import NeuralNetwork
+import neural.network.NeuralNetwork
 import SNAKE_VISION_RADIUS
 import field.entities.Direction
 import field.entities.FieldCell

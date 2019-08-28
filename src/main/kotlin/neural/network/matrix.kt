@@ -1,3 +1,5 @@
+package neural.network
+
 import kotlin.random.Random
 
 /*
@@ -28,7 +30,7 @@ class Matrix(
             }})
 
     operator fun Matrix.times(matrix: Matrix): Matrix {
-        return Matrix(array*matrix.array)
+        return Matrix(array * matrix.array)
     }
 
     private operator fun Array<Array<Double>>.times(array:Array<Array<Double>>): Array<Array<Double>> {
@@ -65,7 +67,7 @@ private operator fun Array<Double>.times(array:Array<Double>):Double{
     return result
 }
 
-operator fun Array<Double>.times(matrix:Matrix): Array<Double> = this*matrix.array
+operator fun Array<Double>.times(matrix: Matrix): Array<Double> = this*matrix.array
 
 
 
