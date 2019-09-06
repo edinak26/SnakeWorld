@@ -21,7 +21,13 @@ class NeuralNetwork(
         network.add(Matrix(hidden.last(), output))
     }
 
-    fun calc(input:Array<Double>): Array<Double> {
+    fun calc(input:Array<Double>): Int {
+        val resultArray = calcArray(input)
+        val resultIndex = resultArray.indexOf(resultArray.max())
+        return resultIndex
+    }
+
+    fun calcArray(input:Array<Double>): Array<Double> {
         var result = input
         for(layer in network) {
             result *= layer

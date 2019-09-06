@@ -1,12 +1,12 @@
 package field.entities.creatures
 
-import Colored
-import field.entities.FieldCell
+import field.entities.CreatureElement
+import java.util.*
 
-abstract class Creature: Colored() {
+abstract class Creature{
 
 
-    val body = mutableListOf<FieldCell>()
+    val body: LinkedList<CreatureElement> = LinkedList()
 
     abstract var mustDead: Boolean
     abstract val isDead:Boolean
@@ -16,6 +16,5 @@ abstract class Creature: Colored() {
 
     abstract fun move(simpleField: Array<Double>)
     abstract fun kill()
-    abstract fun glColorDraw()
-    abstract fun removeCollision(collisionEntities: List<FieldCell>, entityCell: FieldCell)
+    abstract fun removeCollision(collisionElement: CreatureElement, collisions: List<CreatureElement>)
 }

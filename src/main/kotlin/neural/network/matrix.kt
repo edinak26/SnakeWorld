@@ -22,7 +22,7 @@ fun main(){
 class Matrix(
     val array:Array<Array<Double>>
 ){
-    constructor(h:Int=0,w:Int=0) : this(Array<Array<Double>>(h){ Array<Double>(w){ Random.nextInt(-5000,5000)*0.001}})
+    constructor(h:Int=0,w:Int=0) : this(Array<Array<Double>>(h){ Array<Double>(w){ Random.nextInt(-7000,7000)*0.001}})
     fun print() = print(
         array.joinToString(separator= " ") {
             it.joinToString(postfix = "\n") {

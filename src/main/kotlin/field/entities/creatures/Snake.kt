@@ -2,8 +2,8 @@ package field.entities.creatures
 
 import neural.network.NeuralNetwork
 import SNAKE_VISION_RADIUS
-import field.entities.Direction
 import field.entities.FieldCell
+import field.enums.Direction
 import org.lwjgl.opengl.GL11
 import kotlin.math.absoluteValue
 import kotlin.random.Random

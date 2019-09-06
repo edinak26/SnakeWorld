@@ -1,10 +1,10 @@
+package field
+
 const val DISPLAY_HEIGHT = 650
 const val DISPLAY_WIDTH = 650
 const val FIELD_HEIGHT = 100
 const val FIELD_WIDTH = 100
 
-
-//val DEFAULT_SNAKES_DIRECTION = Up
 
 const val SNAKE_BODY_NEURAL_VALUE = - 1.0
 const val SNAKE_HEAD_NEURAL_VALUE = - 0.5
