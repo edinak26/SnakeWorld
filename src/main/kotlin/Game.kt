@@ -1,6 +1,5 @@
 import field.Field
 import  field.entities.creatures.factories.CreatureFactory
-import field.entities.creatures.Creature
 import field.entities.creatures.Snake
 import field.entities.creatures.factories.SnakeFactory
 import view.Drawer
@@ -20,7 +19,7 @@ class Game(val squareNumber: Int = 10) {
     fun update() {
         snakes.forEach { it.move(field.generateSimpleField(it.visionCenter)) }
         field.removeCollisions()
-        snakes.filter{ it.mustDead }.forEach{ it.kill() }
+        snakes.filter{ it.mustDie }.forEach{ it.kill() }
         snakes.removeAll { it.body.size == 0 }
         Drawer.drawSnakes(snakes)
     }

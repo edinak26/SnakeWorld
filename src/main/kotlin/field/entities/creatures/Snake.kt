@@ -1,75 +1,62 @@
 package field.entities.creatures
 
 import neural.network.NeuralNetwork
-import SNAKE_VISION_RADIUS
-import field.entities.FieldCell
+import field.SNAKE_VISION_RADIUS
+import field.entities.CreatureElement
 import field.enums.Direction
-import org.lwjgl.opengl.GL11
+import field.enums.SnakeDirection
 import kotlin.math.absoluteValue
-import kotlin.random.Random
 
 
 data class Snake(
-    var length: Int = 5,
-    var index: Int
+    override val index: Int
 ) : Creature() {
-    override var mustDead: Boolean = false
 
-    val brain = NeuralNetwork()
-    val head get() = body[0]
+    private val brain = NeuralNetwork()
+    val head: CreatureElement get() = body.first
+    var currentDirection: Direction = Direction.randomDirection()
 
     override val visionCenter get() = head.coords
-    override val isDead get() = body.size == 0
     override val visionRadius: Int = SNAKE_VISION_RADIUS
 
-    fun addElement(element: FieldCell) = body.add(element)
-    fun addElements(elements: List<FieldCell>) = elements.forEach { addElement(it) }
+    override val isDead get() = body.size == 0
 
+    fun addHead(head: CreatureElement) = body.push(head)
+
+
+    fun addElement(element: CreatureElement) = body.add(element)
+    fun addElements(elements: List<CreatureElement>) = elements.forEach { addElement(it) }
 
     override fun move(simpleField: Array<Double>) {
-        val resultArray = brain.calc(simpleField)
-        val result = resultArray.indexOf(resultArray.max()) - 1
         moveBody()
-
-        if (head.direction == null) {
-            head.direction = Direction.valueOf(Random.nextInt(0,4))
-        }
-        head.move(
-            Direction.valueOf(result + head.direction!!.index)
-                ?: throw Exception("Undefined direction")
-        )
+        moveHead(simpleField)
     }
 
     fun moveBody() {
-        for ((cell, nextCell) in body.asReversed().zipWithNext()) {
-            val direction = nextCell.direction
-            if (direction != null)
-                cell.move(direction)
+        for (i in body.size - 1 downTo 1) {
+            val currentElement = body[i]
+            val nextElement = body[i - 1]
+            currentElement.moveTo(nextElement)
         }
     }
 
-    override fun glColorDraw() { //TODO refactor
-        changeColor()
-        setColor()
-
-        GL11.glColor4f(1f, 1f, 1f, 1f)
-        body.forEach { it.glDraw() }
-        GL11.glColor4f(1f, 1f, 1f, 1f)
-
-        GL11.glColor4f(0.5f, 0.2f, 0.4f, 1f)
-        body[0].glDraw()
-        GL11.glColor4f(1f, 1f, 1f, 1f)
+    fun moveHead(simpleField: Array<Double>) {
+        val directionIndex = brain.calc(simpleField)
+        val selectedSnakeDirection =
+            SnakeDirection.valueOf(directionIndex) ?: throw Exception("Undefined direction exception")
+        currentDirection += selectedSnakeDirection
+        head.move(currentDirection)
     }
 
     override fun kill() {
         body.forEach { it.remove() }
-        body.removeAll { true }
+        body.clear()
     }
 
 
-    override fun removeCollision(collisionEntities: List<FieldCell>, entityCell: FieldCell) {
-        if (entityCell == head) {
-            mustDead = collisionEntities
+    override fun removeCollision(collisionElement: CreatureElement, collisions: List<CreatureElement>) {
+        if (collisionElement == head) {
+            mustDie = collisions
                 .any { it.rating.absoluteValue >= head.rating.absoluteValue }
 
         }

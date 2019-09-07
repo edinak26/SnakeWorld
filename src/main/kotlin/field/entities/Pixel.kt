@@ -3,4 +3,4 @@ package field.entities
 import java.util.*
 
 
-class Pixel : LinkedList<FieldCell>()
+class Pixel : LinkedList<CreatureElement>()
