@@ -113,7 +113,7 @@ class Field {
         val collisions = getCollisions()
         for (collision in collisions) {
             for (cell in collision) {
-                cell.entity.removeCollision(cell,collision.filter{it!=cell})
+                cell.entity.removeCollisions(cell,collision.filter{it!=cell})
             }
         }
     }

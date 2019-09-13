@@ -18,7 +18,7 @@ const val NEURAL_EMPTY_CELL_VALUE = 0.0
 const val NEURAL_FOOD_VALUE = 1.0
 const val NEURAL_FIELD_END_VALUE = -1.0
 
-const val SNAKE_HEAD_RATING = 2
-const val SNAKE_BODY_RATING = -2
+const val SNAKE_HEAD_RATING = 1
+const val SNAKE_BODY_RATING = 2
 const val DEFAULT_RATING = 0
 

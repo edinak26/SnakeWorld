@@ -9,6 +9,9 @@ import neural.network.NeuralNetwork
 class Food(
     override val index: Int
 ) : Creature() {
+    override fun eat(element: CreatureElement) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val brain = NeuralNetwork()
 
@@ -31,11 +34,5 @@ class Food(
     override fun kill() {
         head.remove()
         body.removeAt(0)
-    }
-
-    override fun removeCollision(collisionElement: CreatureElement, collisions: List<CreatureElement>) {
-        //mustDie = head.rating.absoluteValue >= head.rating.absoluteValue
-
-
     }
 }

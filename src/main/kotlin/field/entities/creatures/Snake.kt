@@ -23,9 +23,9 @@ data class Snake(
 
     fun addHead(head: CreatureElement) = body.push(head)
 
+    fun addElements(elements: List<CreatureElement>) = elements.forEach { addElement(it) }
 
     fun addElement(element: CreatureElement) = body.add(element)
-    fun addElements(elements: List<CreatureElement>) = elements.forEach { addElement(it) }
 
     override fun move(simpleField: Array<Double>) {
         moveBody()
@@ -40,7 +40,7 @@ data class Snake(
         }
     }
 
-    fun moveHead(simpleField: Array<Double>) {
+    private fun moveHead(simpleField: Array<Double>) {
         val directionIndex = brain.calc(simpleField)
         val selectedSnakeDirection =
             SnakeDirection.valueOf(directionIndex) ?: throw Exception("Undefined direction exception")
@@ -48,18 +48,14 @@ data class Snake(
         head.move(currentDirection)
     }
 
+    override fun eat(element: CreatureElement) {
+
+    }
+
     override fun kill() {
         body.forEach { it.remove() }
         body.clear()
     }
 
-
-    override fun removeCollision(collisionElement: CreatureElement, collisions: List<CreatureElement>) {
-        if (collisionElement == head) {
-            mustDie = collisions
-                .any { it.rating.absoluteValue >= head.rating.absoluteValue }
-
-        }
-    }
 
 }
