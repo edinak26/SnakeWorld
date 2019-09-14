@@ -1,7 +1,6 @@
 package field.entities.creatures
 
-import field.FOOD_VISION_RADIUS
-import field.SNAKE_VISION_RADIUS
+import field.constants.FOOD_VISION_RADIUS
 import field.entities.CreatureElement
 import field.enums.Direction
 import neural.network.NeuralNetwork
@@ -17,7 +16,7 @@ class Food(
 
     val head get() = body[0]
 
-    var currentDirection: Direction = Direction.randomDirection()
+    private var currentDirection: Direction = Direction.randomDirection()
 
     override val visionCenter get() = head.coords
     override val visionRadius: Int = FOOD_VISION_RADIUS

@@ -1,5 +1,7 @@
 package field
 
+import field.constants.FIELD_HEIGHT
+import field.constants.FIELD_WIDTH
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 

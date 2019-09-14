@@ -1,6 +1,7 @@
 package field.entities.creatures.factories
 
 import field.*
+import field.constants.creatures.*
 import field.entities.CreatureElement
 import field.entities.creatures.Creature
 import field.entities.creatures.Snake
@@ -25,8 +26,12 @@ class SnakeFactory(
 
     private fun createHead(snake: Snake): CreatureElement {
         val head = field.createCell(snake)
-        head.neuralValue = SNAKE_HEAD_NEURAL_VALUE
-        head.rating = SNAKE_HEAD_RATING
+        with(head){
+            neuralValue = SNAKE_HEAD_NEURAL_VALUE
+            rating = SNAKE_HEAD_RATING
+            nutrient = SNAKE_HEAD_NUTRIENT
+            this.
+        }
         return head
     }
 

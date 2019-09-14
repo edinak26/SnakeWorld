@@ -1,7 +1,7 @@
 package field.entities
 
-import field.DEFAULT_RATING
-import field.Field
+import field.*
+import field.constants.creatures.*
 import field.entities.creatures.Creature
 import field.enums.Direction
 import field.enums.Direction.*
@@ -11,8 +11,9 @@ data class CreatureElement(
     override var y: Int,
     val entity: Creature,
     val field: Field,
-    var neuralValue: Double = 0.0,
-    var index: Int = -1
+    var neuralValue: Double = DEFAULT_NEURAL_VALUE,
+    var index: Int = DEFAULT_CREATURE_INDEX,
+    var nutrient: Int = DEFAULT_NUTRIENT
 ): Square(x,y) {
 
     constructor(

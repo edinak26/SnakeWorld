@@ -1,7 +1,7 @@
 package view
 
-import field.DISPLAY_HEIGHT
-import field.DISPLAY_WIDTH
+import field.constants.DISPLAY_HEIGHT
+import field.constants.DISPLAY_WIDTH
 import org.lwjgl.glfw.Callbacks
 import org.lwjgl.glfw.GLFW
 import org.lwjgl.glfw.GLFW.glfwInit

@@ -1,5 +1,9 @@
 package field
 
+import field.constants.FIELD_HEIGHT
+import field.constants.FIELD_WIDTH
+import field.constants.NEURAL_EMPTY_CELL_VALUE
+import field.constants.NEURAL_FIELD_END_VALUE
 import field.entities.CreatureElement
 import field.entities.Pixel
 import field.entities.creatures.Creature

@@ -1,7 +1,7 @@
 package field.entities
 
-import field.FIELD_HEIGHT
-import field.FIELD_WIDTH
+import field.constants.FIELD_HEIGHT
+import field.constants.FIELD_WIDTH
 
 open class Square(
     protected open var x: Int,

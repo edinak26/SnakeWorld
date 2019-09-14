@@ -1,11 +1,10 @@
 package field.entities.creatures
 
 import neural.network.NeuralNetwork
-import field.SNAKE_VISION_RADIUS
+import field.constants.creatures.SNAKE_VISION_RADIUS
 import field.entities.CreatureElement
 import field.enums.Direction
 import field.enums.SnakeDirection
-import kotlin.math.absoluteValue
 
 
 data class Snake(
@@ -49,7 +48,7 @@ data class Snake(
     }
 
     override fun eat(element: CreatureElement) {
-
+        element.nutrient
     }
 
     override fun kill() {
